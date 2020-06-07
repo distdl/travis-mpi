@@ -4,11 +4,10 @@ source =
    */site-packages
 
 [run]
-branch = true
+parallel = true
 source =
     test_mpi_pkg
     tests
-parallel = true
 
 [report]
 show_missing = true
