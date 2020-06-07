@@ -6,7 +6,7 @@ env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
     - SEGFAULT_SIGNALS=all
-    # - HYDRA_LAUNCHER=fork
+    - HYDRA_LAUNCHER=fork
     - OMPI_MCA_plm=isolated
     - OMPI_MCA_rmaps_base_oversubscribe=true
     - NP=4
