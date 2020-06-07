@@ -39,7 +39,7 @@ before_install:
   - python --version
   - uname -a
   - lsb_release -a || true
-  - ./ci/travis-ci/install-mpi.sh $MPI
+  - bash ci/travis-ci/install-mpi.sh $MPI
   - if [[ "$MPI" == "mpich"   ]]; then mpichversion; fi
 
 install:
