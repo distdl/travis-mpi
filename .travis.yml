@@ -9,7 +9,7 @@ env:
     - HYDRA_LAUNCHER=fork
     - OMPI_MCA_plm=isolated
     - OMPI_MCA_rmaps_base_oversubscribe=true
-    - NP=1
+    - NP=4
   matrix:
     - MPI=mpich
     # - MPI=openmpi
