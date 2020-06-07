@@ -5,11 +5,19 @@ env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
     - SEGFAULT_SIGNALS=all
+    # - HYDRA_LAUNCHER=fork
+    - OMPI_MCA_plm=isolated
+    - OMPI_MCA_rmaps_base_oversubscribe=true
+  matrix:
+    - MPI=mpich
+    # - MPI=openmpi
 matrix:
   include:
     - python: '3.6'
       env:
         - TOXENV=check
+        - MPI=mpich
+
     # - python: '3.6'
     #   env:
     #     - TOXENV=docs
@@ -24,11 +32,15 @@ matrix:
     #   python: '3.7'
     - env:
         - TOXENV=py38,codecov
+        - MPI=mpich
       python: '3.8'
 before_install:
   - python --version
   - uname -a
   - lsb_release -a || true
+  - ./ci/travis-ci/install-mpi.sh $MPI
+  - if [[ "$MPI" == "mpich"   ]]; then mpichversion; fi
+
 install:
   - python -mpip install --progress-bar=off tox -rci/requirements.txt
   - virtualenv --version
