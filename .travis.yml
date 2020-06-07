@@ -62,8 +62,7 @@ install:
   - pip --version
   - tox --version
 script:
-  # - tox -v
-  - mpiexec -n $NP python -m mpi4py -m pytest --with-mpi -rsa $PWD/tests
+  - tox -v
 after_failure:
   - more .tox/log/* | cat
   - more .tox/*/log/* | cat
