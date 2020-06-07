@@ -35,6 +35,16 @@ matrix:
         - TOXENV=py38,codecov
         - MPI=mpich
       python: '3.8'
+
+cache:
+  apt: true
+
+addons:
+  apt:
+    update: true
+  homebrew:
+    update: true
+
 before_install:
   - python --version
   - uname -a
