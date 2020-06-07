@@ -21,4 +21,3 @@ def test_get_size(barrier_fence_fixture, sz, comm_split_fixture):
     rsz = test_mpi_pkg.get_size(base_comm)
 
     assert(sz == rsz)
-
