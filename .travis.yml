@@ -9,6 +9,7 @@ env:
     # - HYDRA_LAUNCHER=fork
     - OMPI_MCA_plm=isolated
     - OMPI_MCA_rmaps_base_oversubscribe=true
+    - NP=4
   matrix:
     - MPI=mpich
     # - MPI=openmpi
@@ -38,6 +39,8 @@ matrix:
 
 cache:
   apt: true
+  directories:
+    - $HOME/.cache/pip
 
 addons:
   apt:
@@ -59,7 +62,8 @@ install:
   - pip --version
   - tox --version
 script:
-  - tox -v
+  # - tox -v
+  - mpiexec -n $NP python -m mpi4py -m pytest --with-mpi -rsa $PWD/tests
 after_failure:
   - more .tox/log/* | cat
   - more .tox/*/log/* | cat
