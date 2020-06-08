@@ -1,7 +1,11 @@
 language: python
+
 dist: xenial
+
 sudo: required
-cache: false
+
+# cache: false
+
 env:
   global:
     - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
@@ -13,15 +17,16 @@ env:
   matrix:
     - MPI=mpich
     # - MPI=openmpi
+
 matrix:
   include:
     - python: '3.6'
       env:
         - TOXENV=check
         - MPI=mpich
-    - python: '3.6'
-      env:
-        - TOXENV=docs
+    # - python: '3.6'
+    #   env:
+    #     - TOXENV=docs
     - python: '3.5'
       env:
         - TOXENV=py35
