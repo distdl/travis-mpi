@@ -56,8 +56,6 @@ cache:
 addons:
   apt:
     update: true
-  homebrew:
-    update: true
 
 before_install:
   - python --version
